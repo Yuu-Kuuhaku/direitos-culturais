@@ -1,0 +1,103 @@
+<div class="dialog-container">
+
+  <div class="dialog-header" >
+
+    <ng-container [ngSwitch]="elementDialog?.character" >
+
+      <ng-container
+       *ngSwitchCase="'Psicólogo(a)'" >
+        <img class="dialog-header-img" src="assets/personagens/Psicologa.jpg">
+        <div class="dialog-header-title"> <span> <strong>Psicóloga</strong></span></div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'João'" >
+        <img class="dialog-header-img" src="assets/personagens/Joao.jpg">
+        <div class="dialog-header-title"> <span> <strong>João</strong></span></div>
+      </ng-container>
+
+      <span *ngSwitchDefault>
+
+      </span>
+
+    </ng-container>
+
+
+  </div>
+  <div class="dialog-box"  *ngIf="hasInitial">
+
+    <div>
+      <h3>Bem-vindo ao jogo!</h3>
+      <p>Neste jogo, você vai testar seus conhecimentos sobre como orientar um adolescente em uma
+      situação de violação de direitos. O objetivo é ajudar João, um adolescente que enfrenta
+      desafios relacionados ao respeito pela sua religião e identidade cultural na escola, a entender seus direitos.</p>
+      <h3>Regras do jogo:</h3>
+      <ul style="text-align: start;">
+        <li  style="text-align: start;">Você será um(a) psicólogo(a) que irá atender João em uma sessão de terapia.</li>
+        <li  style="text-align: start;">Você precisará escolher a melhor opção de orientação para ele, considerando os direitos garantidos pelo Estatuto da Criança e do Adolescente (ECA).</li>
+
+        <li  style="text-align: start;">Cada escolha sua influenciará a direção da conversa e as possíveis respostas de João.</li>
+        <li  style="text-align: start;">Algumas opções podem ser corretas e outras podem ser prejudiciais ou inadequadas.</li>
+
+      </ul>
+      Sua missão:
+      Escolha sabiamente! O objetivo é ajudar João a compreender seus direitos e como se defender
+      de maneira assertiva e segura.
+      No final, some sua pontuação e veja se conseguiu realmente ajudar João a lidar com a
+      situação!
+      Vamos começar?
+
+    </div>
+
+
+    <button (click)="newGame()">Novo Jogo</button>
+  </div>
+
+  <div class="dialog-box" *ngIf="!hasInitial && !hasScore && !hasCreditos">
+    <div>
+      {{viewText}}
+    </div>
+    <div class="w-100" style="display: flex; justify-content: end; flex-direction: column;  margin-top: 2rem;" >
+      <button style="margin: 1rem;" *ngFor="let action of elementDialog.options" (click)="next(action)">{{action.label}}</button>
+    </div>
+
+
+  </div>
+
+  <div *ngIf="hasCreditos && !hasInitial && !hasScore" class="dialog-box">
+    <div  style="display: flex; justify-content: start; flex-direction:column;" >
+      <div>
+        <p>Este jogo foi inspirado no artigo 58 do <a href="https://www.planalto.gov.br/ccivil_03/leis/l8069.htm" target="_blank">Estatuto da Criança e do Adolescente (ECA)</a>, que garante o direito de crianças e adolescentes ao respeito de seus valores culturais, artísticos e históricos, inclusive no ambiente escolar. Você pode saber mais sobre seus direitos acessando o ECA neste link <a href="https://www.gov.br/mdh/pt-br/navegue-por-temas/crianca-e-adolescente/publicacoes/eca_mdhc_2024.pdf" target="_blank">https://www.gov.br/mdh/pt-br/navegue-por-temas/crianca-e-adolescente/publicacoes/eca_mdhc_2024.pdf</a></p>
+
+        Quer tentar de novo e aumentar sua pontuação?
+      </div>
+      <div class="w-100" style="display: flex; justify-content: end; flex-direction: column;  margin-top: 2rem;" >
+        <button style="margin: 1rem;" *ngFor="let action of elementDialog.options" (click)="next(action)">{{action.label}}</button>
+      </div>
+      <p>Autores:</p>
+      <small>Amanda Amaro Ribeiro Silva</small>
+      <small>Amanda Aparecida Fukuda Godoi</small>
+      <small>Ana Livia Faria Martins</small>
+      <small>Mateus Malta Gontijo</small>
+      <small>Rúbia Lima Brandão</small>
+      <p>Participação especial:</p>
+      <small>Eustáquio Ferreira
+        <a href="https://github.com/Yuu-Kuuhaku"  target="_blank"><img src="assets/github-log.png" height="15" width="15"></a>
+      </small>
+    </div>
+  </div>
+
+  <div class="dialog-box" *ngIf="!hasInitial && hasScore && !hasCreditos">
+    <div>
+      Você acertou {{countScore}} / {{countQuestions}}
+    </div>
+    <div>
+
+      Obteve {{((countScore / countQuestions) * 100).toFixed(2)}}% de acerto{{countQuestions == 4? ', e descobriu uma questão secreta': ''}}.
+    </div>
+    <div class="w-100" style="display: flex; justify-content: end; flex-direction: column;  margin-top: 2rem;" >
+      <button style="margin: 1rem;" *ngFor="let action of elementDialog.options" (click)="next(action)">{{action.label}}</button>
+    </div>
+
+  </div>
+
+</div>
+
