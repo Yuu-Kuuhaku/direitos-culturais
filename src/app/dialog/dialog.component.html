@@ -65,23 +65,30 @@
   <div *ngIf="hasCreditos && !hasInitial && !hasScore" class="dialog-box">
     <div  style="display: flex; justify-content: start; flex-direction:column;" >
       <div>
+        <h2>Obrigado por jogar!</h2>
+        <p>Apresentamos uma breve história sobre a busca de direitos da criança e do adolescente, referente à disciplina de Psicologia e direitos humanos do curso de psicologia da Universidade Estadual de Minas Gerais</p>
+
         <p>Este jogo foi inspirado no artigo 58 do <a href="https://www.planalto.gov.br/ccivil_03/leis/l8069.htm" target="_blank">Estatuto da Criança e do Adolescente (ECA)</a>, que garante o direito de crianças e adolescentes ao respeito de seus valores culturais, artísticos e históricos, inclusive no ambiente escolar. Você pode saber mais sobre seus direitos acessando o ECA neste link <a href="https://www.gov.br/mdh/pt-br/navegue-por-temas/crianca-e-adolescente/publicacoes/eca_mdhc_2024.pdf" target="_blank">https://www.gov.br/mdh/pt-br/navegue-por-temas/crianca-e-adolescente/publicacoes/eca_mdhc_2024.pdf</a></p>
 
-        Quer tentar de novo e aumentar sua pontuação?
+        <p>Quer tentar de novo e aumentar sua pontuação?</p>
+
       </div>
       <div class="w-100" style="display: flex; justify-content: end; flex-direction: column;  margin-top: 2rem;" >
         <button style="margin: 1rem;" *ngFor="let action of elementDialog.options" (click)="next(action)">{{action.label}}</button>
       </div>
-      <p>Autores:</p>
+      <p style="margin-bottom: 0;">Roteirizado por:</p>
       <small>Amanda Amaro Ribeiro Silva</small>
       <small>Amanda Aparecida Fukuda Godoi</small>
       <small>Ana Livia Faria Martins</small>
       <small>Mateus Malta Gontijo</small>
       <small>Rúbia Lima Brandão</small>
-      <p>Participação especial:</p>
+      <p style="margin-bottom: 0;">Participação especial<br/>
+        Programado por:</p>
       <small>Eustáquio Ferreira
         <a href="https://github.com/Yuu-Kuuhaku"  target="_blank"><img src="assets/github-log.png" height="15" width="15"></a>
       </small>
+      <p style="margin-bottom: 0;">Docente:</p>
+      <small>Prof.ª Dr.ª Rafaela Rocha Costa</small>
     </div>
   </div>
 
